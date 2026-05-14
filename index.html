@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Productividad Personal</title>
+
+  <!-- ============ FUENTE DE MONSERRAT ============ -->
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" 
+   rel="stylesheet">
+
+  <!-- ============ ESTILOS SEPARADOS ============ -->
+
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/themes.css">
+  <link rel="stylesheet" href="styles/responsive.css">
+
+</head>
+  <body>
+
+    <!-- ============ ENCABEZADO PRINCIPAL ============ -->
+    
+  <header>
+    <p>Hola, Juan Cruz 👋 <span id="fecha-actual"></span></p>
+    <h1>Panel de Organización Personal</h1>
+  </header>
+
+    <!-- ============ SECCION DE RESUMEN SEMANAL ============ -->
+
+  <section id="resumen">
+  <h2>RESUMEN DE LA SEMANA</h2>
+  <ul>
+    <li>Tareas completadas: 12</li>
+    <li>Metas avanzadas: 3</li>
+    <li>Hábitos mantenidos: 5</li>
+  </ul>
+</section>
+
+    <!-- ============ MENÚ LATERAL DE NAVEGACIÓN ============ -->
+  <aside>
+  <nav>
+    <ul>
+      <li><a href="#tareas">Tareas</a></li>
+      <li><a href="#metas">Metas</a></li>
+      <li><a href="#tiempo">Tiempo</a></li>
+      <li><a href="#habitos">Hábitos</a></li>
+    </ul>
+  </nav>
+  </aside>
+
+    <!-- ============ CONTENIDO PRINCIPAL DEL DASHBOARD ============ -->
+  
+  <main>
+
+    <!-- ============ TAREAS DEL DÍA ============ -->
+    
+    <section id="tareas">
+      <h2>TAREAS DEL DÍA</h2>
+
+    <!-- ============ FORMULARIO DE NUEVA TAREA ============ -->
+   
+    <form class="task-form">
+     <input type="text" class="input" placeholder="Escribe una nueva tarea...">
+     <button class="btn btn-primary">Agregar</button>
+   </form>
+
+   <ul id="listaTareas"></ul>
+
+
+   
+      <div class="card">
+        <label>                            
+          <input type="checkbox" />
+           <div class="card-texto">
+            <h3>Revisar bandeja de entrada y clasificar prioridades</h3>
+           </div>
+        </label>
+      </div> 
+        
+      <div class="card">
+        <label>
+          <input type="checkbox" />
+           <div class="card-texto">
+             <h3>Planificar objetivos del día</h3>
+           </div>
+        </label>
+      </div>
+
+      <div class="card">
+        <label>
+          <input type="checkbox" />
+           <div class="card-texto">
+             <h3>Actualizar tablero de proyectos</h3>
+           </div>
+        </label>
+      </div>
+   
+
+      <div class="card">
+        <label>
+            <input type="checkbox"/>
+            <div class="card-texto">
+             <h3>Redactar informe de avance</h3>
+            </div>
+        </label>
+      </div>
+
+      <div class="card">
+        <label>
+            <input type="checkbox"/>
+            <div class="card-texto">
+             <h3>Revisar reuniones o entregas programadas</h3>
+            </div>
+        </label>
+      </div>
+      
+    </section>
+
+    <!-- ============ METAS PERSONALES ============ -->
+    
+    <section id="metas">
+      <h2>METAS PERSONALES</h2>
+
+    <!-- ============ FORMULARIO PARA NUEVA META ============ -->
+   
+    <form class="goal-form">
+      <input type="text" class="input" placeholder="Escribe una nueva meta...">
+      <input type="number" class="input" placeholder="Progreso (%)" min="0" max="100">
+      <button class="btn btn-primary">Guardar</button>
+    </form>
+      
+    <div class="card-texto">
+      <h3>Completar el prototipo del sitio</h3>
+      <p>Meta semanal para cerrar estructura y diseño</p>
+      <progress value="40" max="100"></progress> <!-- Barra de progreso -->
+    </div>
+    </section>
+
+    <!-- ============ POMODORO ============ -->
+   
+    <section id="tiempo">
+      <h2>POMODORO</h2>
+
+       <div class="card-texto pomodoro-texto">
+         <h3>Tiempo restante</h3>
+         <p><span id="temporizador">25:00</span></p>
+       </div>
+
+       <div class="card-buttons">
+         <button class="btn btn-primary">Iniciar</button>
+         <button class="btn btn-secondary">Detener</button>
+         <button class="btn btn-secondary">Reiniciar</button>
+       </div>
+    
+    </section>
+
+    <!-- ============ HÁBITOS ============ -->
+    
+    <section id="habitos">
+      <h2>HÁBITOS</h2>
+
+    <!-- ============ FORMULARIO PARA NUEVO HÁBITO ============ -->
+    
+    <form class="habit-form">
+         <input type="text" class="input" placeholder="Escribe un nuevo hábito...">
+         <button class="btn btn-primary">Añadir</button>
+    </form>
+
+      <div class="card">
+        <label>
+            <input type="checkbox" />
+            <div class="card-texto">
+                <h3>Evitar redes sociales durante la mañana</h3>
+            </div>
+        </label>
+      </div>
+    
+      <div class="card">
+        <label>
+            <input type="checkbox" />
+            <div class="card-texto">
+                <h3>Registrar gastos diarios</h3>
+           </div>
+        </label>
+      </div>
+
+      <div class="card">
+        <label>
+            <input type="checkbox" />
+            <div class="card-texto">
+                <h3>Realizar ejercicio físico</h3>
+            </div>
+        </label>
+      </div>
+
+      <div class="card">
+        <label>
+            <input type="checkbox"/>
+            <div class="card-texto">
+                <h3>Leer 20 páginas</h3>
+            </div>
+        </label>
+      </div>
+
+      <div class="card">
+        <label>
+            <input type="checkbox"/>
+            <div class="card-texto">
+                <h3>Meditar 10 minutos</h3>
+            </div>
+        </label>
+      </div>
+
+      <div class="card">
+        <label>
+            <input type="checkbox"/>
+            <div class="card-texto">
+                <h3>Dormir al menos 7 horas</h3>
+                
+            </div>
+        </label>
+      
+    </section>
+      
+    <!-- ============ SELECTOR TEMA CLARO/OSCURO ============ -->
+
+    <section id="tema">
+      <h2>PERSONALIZAR TEMA</h2>
+
+     <div class="tema-botones"> 
+        <button class="btn btn-primary" id="modo-claro">Tema Claro</button>
+        <button class="btn btn-secondary" id="modo-oscuro">Tema Oscuro</button>
+     </div>
+    </section>
+  
+    </main>
+
+    <!-- ============ PIE DE FRASE MOTIVACIONAL ============ -->
+  
+  <footer>
+    <blockquote>"No esperes a estar listo. Empezá y ajustá en el camino" </blockquote>
+    <p>2025 Juan Cruz Armella - Proyecto Final</p>
+  </footer>
+
+    <!-- ============ SCRIPTS JS ============ -->
+
+   <script src="js/main.js" defer></script>
+   <script src="js/theme-switcher.js" defer></script>
+
+  </body>
+</html>
+

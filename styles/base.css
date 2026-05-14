@@ -1,0 +1,568 @@
+/* ============ ESTILOS GENERALES Y VARIABLES ============ */
+
+/*aplica a todos los elementos del HTML*/
+* {
+  margin: 0;               /*elimina margenes por defecto*/
+  padding: 0;              /*elimina relleno interno por defecto*/
+  box-sizing: border-box;  /*incluye padding y borde dentro del ancho/alto*/
+}
+
+/*variables globales para colores, fuente y temas*/
+:root {
+  --font-main: 'Inter', sans-serif;      /*fuente principal*/
+  --color-bg-light: #ffffff;           /*fondo modo claro*/
+  --color-bg-dark: #393939;            /*fondo modo oscuro*/
+  --color-text-light: #333;            /*texto en modo claro*/
+  --color-text-dark: #eee;             /*texto en modo oscuro*/
+  --color-accent: hsl(243, 45%, 53%);  /*botones, enlaces, etc.*/
+}
+
+/*estilos para el cuerpo del documento */
+body {
+  font-family: var(--font-main);                     /*usa la fuente definida en las variables (por ejemplo "Manrope")*/
+  font-size: 14px;                                   /*tamaño del texto*/
+  line-height: 1.6;                                  /*espacio entre lineas para mejorar la lectura*/
+  background-color: var(--color-bg-light);           /*color que se verá si la pág no carga*/
+  background-image: url(../assets/fondoverde.jpg);   /*imagen de fondo*/ 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--color-text-light);                           /*color de texto claro por defecto*/
+  transition: background-color 0.3s ease, color 0.3s ease;  /*suaviza el cambio de tema*/
+}
+
+/*------------------------------------*/
+/* ============ ESTRUCTURA GENERAL DEL LAYOUT============ 
+*/ /*estructura visual*/
+body {
+    display: grid;                    /*activa CSS Grid para organizar el diseño*/
+    grid-template-areas:
+    "header header"
+    "sidebar main";                   /*define las zonas visuales del layout*/
+    grid-template-columns :250px 1fr; /*sidebar fijo de 250px y contenido flexible*/
+    grid-template-rows: 80px auto;    /*header de 80px de alto y el resto adaptable*/
+    min-height: 100vh;                /*ocupa toda la altura de la pantalla*/
+}
+
+/* ============ HEADER ============*/ 
+/*aplican al elemento "header", suele contener un titulo principal o saludo"*/
+header {
+    grid-area: header;                               /*ubica el header en la zona 'header' del grid*/
+    background-color: var(--color-bg-light-accent);  /*usa el color de imagen de fondo destacado*/
+    color: rgb(255, 255, 255);                     /*texto "Panel de Organización Personal"*/
+    padding: 1rem 2rem;                              /*espaciado interno arriba/abajo y a los lados*/
+   
+    display: flex;                                   /*usa flexbox para alinear el contenido*/
+    align-items: center;                             /*centra verticalmente los elementos*/
+    justify-content: center;                         /*distribuye elementos a los extremos*/
+    position: relative;                              /* permite posicionar el saludo */
+}
+
+/*contenedor del header*/
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 1rem;
+}
+
+/*titulo*/
+header h1 {
+  margin: 0;           
+  text-align: center;         /*centra el texto dentro del h1*/
+  font-size: clamp (1.5rem, 5vw, 2rem);
+  font-weight: bold;
+  width: 100%;                /*ocupa todo el ancho disponible*/
+}
+
+/* Saludo */
+header p  {
+  margin: 0 0 0.5rem 0;
+  font-size: clamp (1rem, 4vw, 1.2rem);
+  align-self: flex-end;
+  }
+
+/* ============ SIDEBAR ============*/
+aside {
+    grid-area: sidebar;            /*ubica el aside en la zona 'sidebar' del grid*/
+    background-color: #1c1c1e6e; /*fondo claro para diferenciarlo del contenido*/
+    padding: 2rem;                 /*espaciado interno*/
+    display: flex;                 /*permite alinear el contenido verticalmente*/
+    flex-direction: column;        /*organiza los items en columna*/
+    gap: 1rem;                     /*espacio entre items*/
+
+    border-radius: 12px;           /* redondea las esquinas del contenedor */
+}
+
+/* ============ CONTENIDO PRINCIPAL ============*/
+main {
+    grid-area: main;                                 /*ubica el main en la zona 'main' del grid*/
+    padding: 2rem;                                   /*espaciado interno*/
+    background-color: rgba(255, 255, 255, 0.052);  /*fondo claro por defecto*/
+    border-radius: 10px;
+}
+
+/*FOOTER*/
+footer {
+    grid-column: 1 / -1;           /*ocupa todo el ancho del grid*/
+    background-color: #00000000; /*fondo neutro*/
+    text-align: center;            /*centra el texto*/
+    padding: 1rem;                 /*espaciado interno*/
+    font-size: 0.9rem;             /*texto pequeño*/
+    color: #ffffff;              /*color para tono suave*/
+}
+
+/*------------------------------------*/
+/* ============ COMPONENTS.CSS ============*/ 
+/*BOTONES, TARJETAS, IMPUTS,ETC*/
+
+/*BOTONES GENERALES*/
+
+.btn {
+  padding: 0.5rem 1rem;                   /* Espaciado interno: arriba/abajo 0.5rem, lados 1rem */
+  border: none;                           /* Elimina el borde por defecto del navegador */
+  border-radius: 6px;                     /* Bordes redondeados para suavizar el diseño */
+  font-weight: 600;                       /* Texto en semi-negrita para destacar la acción */
+  cursor: pointer;                        /* Cambia el cursor al pasar por encima */
+  transition: background-color 0.3s ease; /* Suaviza el cambio de color al hacer hover */
+}
+
+/*BOTÓN PRINCIPAL (color destacado)*/
+
+.btn-primary {
+  background-color: var(--color-accent);   /*Usa el color principal definido en las variables*/
+  color: white;                          /*Texto blanco para buen contraste*/
+}
+
+/* Hover para botón principal */
+.btn-primary:hover {
+  background-color: #3a35cc;      /*Color más oscuro al pasar el mouse*/
+}
+
+/*BOTÓN SECUNDARIO (estilo alternativo)*/
+
+.btn-secondary {
+  background-color: #eee;    /*Fondo claro para estilo neutro*/
+  color: #2a2a2a;            /*Texto oscuro para contraste*/
+}
+
+/* Hover para botón secundario */
+.btn-secondary:hover {
+  background-color: #ddd;    /*Fondo un poco más oscuro al pasar el mouse */
+}
+
+/* Contenedor de botones Pomodoro */
+.card-buttons {
+  display: flex;
+  flex-direction: column;   /*en móvil: apila los botones*/
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.card-buttons .btn {
+  width: 100%;              /*en móvil ocupa todo el ancho*/
+  max-width: 280px;         /*límite para que no se estiren demasiado*/
+  text-align: center;
+}
+
+/* COMPONENTES: POMODORO TITULO */
+
+#tiempo {
+  text-align: center;       /*centra el título POMODORO*/
+}
+
+#tiempo h2 {
+  margin-bottom: 0.5rem;    /*separa el título del subtítulo*/
+}
+
+/*  SOLO afecta al Pomodoro */
+.pomodoro-texto {
+  align-items: center;      /*centra subtítulo y tiempo restante*/
+  text-align: center;       /*centra el texto dentro del bloque*/
+}
+
+/* En pantallas grandes, los botones vuelven a estar en fila */
+@media (min-width: 600px) {
+  .card-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+  .card-buttons .btn {
+    width: auto;            /*ya no ocupan todo el ancho*/
+    flex: none;             /*cada botón mantiene su tamaño natural*/
+    margin: 0 0.5rem;       /*espacio lateral entre botones*/
+    max-width: 150px;       /*opcional: límite de ancho en escritorio*/
+  
+}
+
+/* COMPONENTES: BOTONES DE TEMA */
+
+.tema-botones {
+  display: flex;
+  flex-direction: column;   /*en móvil: apila los botones*/
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.tema-botones .btn {
+  width: 100%;
+  max-width: 280px;
+  text-align: center;
+}
+
+/* En pantallas grandes, los botones se alinean en fila */
+@media (min-width: 600px) {
+  .tema-botones {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .tema-botones .btn {
+    width: auto;
+    flex: none;
+    margin: 0 0.5rem;
+    max-width: 180px;
+  }
+}
+
+/* COMPONENTES: TÍTULO DE TEMA */
+
+#tema h2 {
+  text-align: center;       /*centra el título PERSONALIZAR TEMA*/
+  margin-bottom: 1rem;      /*opcional: espacio debajo del título*/
+}
+
+/* ============ TARJETAS ============*/
+
+.card {
+  /* estilos base de la tarjeta */
+}
+
+.card:hover {
+  /* efecto hover */
+}
+
+/* FORMULARIO DE NUEVA TAREA */
+.task-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.input {
+  flex: 1;
+  max-width: 400px;
+  border-radius: 6px;
+  font-size: 1rem;
+  border: 1px solid var(--color-text-light);
+}
+
+.input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px hsla(243, 45%, 53%, 0.3);
+  outline: none;
+}
+/* LISTA DE TAREAS */
+#listaTareas {
+  list-style: none;   /*elimina los puntos*/
+  padding: 0;
+  margin: 0;
+}
+
+#listaTareas li {
+  display: flex;                 /*checkbox + texto alineados*/
+  align-items: center;
+  font-size: 1rem;               /*mismo tamaño que el resto*/
+  margin-bottom: 8px;            /*espacio entre tareas*/
+  font-family: var(--font-main); /*asegura la misma tipografía*/
+}
+
+#listaTareas li input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+/* Texto de las tareas nuevas */
+#listaTareas li span {
+  font-size: inherit;     /*hereda el 1rem del li*/
+  color: inherit;
+}
+
+#listaTareas li span:hover {
+  transform: scale(1.05);         /*agranda un poco el texto*/
+  transition: transform 0.2s ease;
+}
+
+/* Fondo general */
+body {
+  background-color: rgba(0, 0, 0, 0.79);   /*tono oscuro uniforme*/
+  color: #e0e0e0;                          /*texto claro*/
+  font-family: var(--font-main);
+}
+
+/* Secciones */
+section {
+  background-color: rgba(30, 30, 30, 0.473);   /*bloques oscuros*/
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Títulos */
+h2 {
+  color: #ffffff;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #007bff; /*línea azul elegante*/
+  padding-bottom: 0.5rem;
+}
+
+/* Hover en secciones */
+section:hover {
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+/* Inputs en dark mode */
+input[type="text"] {
+  background-color: rgba(42,42,42,0.8);
+  border: 1px solid #444;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+input[type="text"]::placeholder {
+  color: #aaa;
+}
+
+/* FORMULARIO DE NUEVA META */
+.goal-form {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;            /*permite que los inputs bajen en pantallas pequeñas*/
+}
+
+.goal-form .input {
+  flex: 1;
+  max-width: 198px;           /*cada input más compacto*/
+}
+
+.goal-form button {
+  align-self: center;
+}
+
+/* ================================
+   FORMULARIO DE NUEVO HÁBITO
+================================ */
+.habit-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.habit-form .input {
+  flex: 1;
+  max-width: 410px;           /*mismo estilo que tareas*/
+}
+
+/* ================================
+   COMPONENTES: CHECKBOX EN TARJETAS
+================================ */
+
+/* 🔹 Contenedor del checkbox + texto */
+.card label {
+  display: flex;              /*Alinea elementos en fila*/
+  align-items: flex-start;    /*Alinea el checkbox con el inicio del texto*/
+  gap: 0.75rem;               /*Espacio entre checkbox y texto*/
+}
+
+/* 🔹 Estilo del checkbox */
+.card input[type="checkbox"] {
+  width: 1.2rem;                     /*Tamaño del cuadro*/
+  height: 1.2rem;
+  accent-color: var(--color-accent); /*Color del tilde*/
+  cursor: pointer;                   /*Cursor tipo mano*/
+  flex-shrink: 0;                    /*Evita que el checkbox se achique*/
+  margin-top: 0.3rem;                /*Ajuste fino para alinearlo con el título*/
+}
+
+/* 🔹 Contenedor del texto */
+.card-texto {
+  display: flex;
+  flex-direction: column;            /*Apila título y párrafo verticalmente*/
+}
+
+/* 🔹 Estilo del título */
+.card h3 {
+  font-size: 1.1rem;          /*Tamaño del título*/
+  font-weight: 600;           /*Grosor del texto*/
+  margin: 0;                  /*Elimina márgenes por defecto*/
+}
+
+/* 🔹 Estilo del párrafo */
+.card p {
+  font-size: 0.95rem;           /*Tamaño más pequeño que el título*/
+  color: #555;                /*Color gris medio*/
+  line-height: 1.4;             /*Espaciado vertical cómodo*/
+  margin-top: 0.25rem;          /*Separación del título*/
+}  
+
+/* 🔹 Efecto visual al marcar la tarea como completada */
+.card input[type="checkbox"]:checked + .card-texto h3 {
+  text-decoration: line-through;   /* Tacha el título */
+  color: #888;                   /* Color apagado */
+}
+
+.card input[type="checkbox"]:checked + .card-texto p {
+  opacity: 0.6;                  /* Atenúa la descripción */
+}
+
+/* 🔹 Efecto al pasar el mouse por encima */
+.card:hover {          
+  /*background-color: #f0f0f0ff;                 /* Cambia el fondo al pasar el mouse */
+  /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);   /* Sombra más profunda */
+  transform: scale(1.02);                        /* Levemente más grande */ /*agranda la tarjeta ligeramente al pasar el mouse*/
+  transition: all 1s ease;                       /* transición suave */
+}
+
+/* INTERACCIONES VISUALES DE CADA TARJETA*/
+/* 🔹 Animación de entrada al cargar la tarjeta */
+.card {
+  animation: fadeIn 0.5s ease;   /* Aparece suavemente al cargar */ /*fadeIn es el nombre de la animación*/
+}                                /*0.5 define cuanto tarda la animación*/ /*ease: tipo de aceleración*/
+                            
+/* 🔹 Definición de la animación */ /*fadeIn del @keyframes debe coincidir con el fadeIn de la animation*/
+@keyframes fadeIn {
+  from {
+    opacity: 0;                  /*hace que el elemento pase de invisible a visible*/
+    transform: translateY(10px); /* Desplaza hacia abajo al inicio */
+  }
+  to {
+    opacity: 1;                  /*completamente visible¨/
+    transform: translateY(0);    /* Vuelve a su posición original */
+  }
+}
+
+/* 🔹 Transiciones suaves para texto */
+.card-texto h3,
+.card-texto p {
+  transition: all 0.3s ease;     /* Suaviza cambios de color, opacidad, etc. */
+}
+
+/*estilo de BOTONES (REFINADO)*/
+
+/* Estilo base para todos los botones */
+button {
+  background: linear-gradient(135deg, #007bff, #0056b3); /* degradado elegante */
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Hover: efecto luminoso */
+button:hover {
+  background: linear-gradient(135deg, #3399ff, #007bff);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+/* Active: efecto de clic */
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+/* Botones deshabilitados */
+button:disabled {
+  background: #444;
+  color: #888;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ============ RESPONSIVE.CSS ============ */
+/* Adaptaciones para distintos tamaños */
+
+/* 🔹 Nivel 2: Tablets (≤1024px) */
+@media (max-width: 1024px) {
+  body {
+    grid-template-columns: 200px 1fr; /* sidebar más angosto */
+  }
+
+  header h1 {
+    font-size: 1.5rem; /* título más compacto */
+  }
+
+  aside {
+    padding: 1rem; /* menos padding en sidebar */
+  }
+
+  main {
+    padding: 1rem; /* contenido más ajustado */
+  }
+}
+
+/* 🔹 Nivel 3: Móviles (≤768px) */
+@media (max-width: 768px) {
+  body {
+    grid-template-areas:
+      "header"
+      "main"
+      "sidebar"
+      "footer"; /* todo en una sola columna */
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+  }
+
+  header {
+    padding: 1rem;
+    text-align: center; /* título centrado en móvil */
+  }
+
+  aside {
+    padding: 1rem;
+    border-radius: 0; /* más simple en móvil */
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  /* Formularios en columna */
+  .task-form,
+  .goal-form,
+  .habit-form {
+    flex-direction: column;
+  }
+
+  .input {
+    max-width: 100%; /* ocupa todo el ancho */
+  }
+
+  .btn {
+    width: 100%; /* botones grandes y fáciles de tocar */
+  }
+
+  /* Tarjetas más compactas */
+  .card {
+    padding: 0.8rem;
+  }
+
+  .card-texto h3 {
+    font-size: 1rem;
+  }
+}
